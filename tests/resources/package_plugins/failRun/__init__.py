@@ -1,0 +1,1 @@
+from tests.resources.package_plugins.failRun.sum import foo

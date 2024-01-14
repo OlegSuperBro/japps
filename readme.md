@@ -1,0 +1,1 @@
+# JAPPS - Just Another Python Plugin System
