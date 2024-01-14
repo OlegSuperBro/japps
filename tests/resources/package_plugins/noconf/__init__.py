@@ -1,0 +1,1 @@
+from tests.resources.package_plugins.noconf.sum import run
