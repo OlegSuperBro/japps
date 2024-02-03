@@ -4,7 +4,7 @@ from os import PathLike
 from os.path import exists, join
 
 from japps.Configuration import Configuration
-from japps.Plugin import IPlugin
+from japps.plugins.IPlugin import IPlugin
 from japps.plugin_configs.OneFile import OneFileParser
 from japps.Utils import import_from_path, install_dependencies
 
@@ -37,7 +37,9 @@ class PackagePluginLoader(IPluginLoader):
         if exists(join(self.path, self.config.package_plugin_info_filename)):
             parsed_data: dict = self.config.package_plugin_info_parser.parse(self.path, self.config)
         else:
-            parsed_data: dict = self.config.no_info_default
+            parsed_data: dict = self.config.no_info_default.copy()
+            for key in parsed_data.keys():
+                parsed_data[key] = parsed_data[key].format(num=hash(self.path))
         for key, value in parsed_data.items():
             setattr(tmp_plugin, key, value)
 

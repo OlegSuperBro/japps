@@ -17,6 +17,10 @@
     - [ ] Saving and loading for plugin configurations
     - [ ] Loading plugins dynamically
 
+- Post release (possibly) ((if i'll be not too lazy))
+    - [ ] Using multiple runners and plugin classes at same time
+    - [ ] Allow plugins with same name
+
 - End user things
     - [ ] Documentation:
         - [ ] Detailed guide on setting up the library

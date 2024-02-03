@@ -3,7 +3,7 @@ from os.path import abspath
 from japps.Configuration import Configuration
 from japps.PluginManager import PluginManager
 from japps.plugin_configs.Json import JsonParser
-from japps.Plugin import Plugin
+from japps.plugins.SimplePlugin import SimplePlugin
 from japps.runners.SimpleFuncRunner import SimpleFuncRunner
 
 
@@ -15,13 +15,13 @@ config.allow_dependencies = True
 
 config.allow_no_info = True
 config.no_info_default = {
-    "NAME": "Unknown",
-    "AUTHOR": "Unknown",
+    "NAME": "Unknown{num}",
+    "AUTHOR": "Unknown{num}",
     "TYPE": "TestPlugin"
 }
 
 config.package_plugin_info_parser = JsonParser
-config.plugin_class = Plugin
+config.plugin_class = SimplePlugin
 config.plugin_runner = SimpleFuncRunner
 
 

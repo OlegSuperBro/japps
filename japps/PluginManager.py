@@ -1,13 +1,15 @@
-from typing import List, Self
 import os
 from os.path import isdir
 from re import match
 
+from typing import List, Self, Any
+
 from japps.Configuration import Configuration
-from japps.Plugin import IPlugin
+from japps.plugins.IPlugin import IPlugin
 from japps.PluginLoaders import SinglePluginLoader, PackagePluginLoader
 from japps.Utils import is_pkg
 from japps.Log import log, update_logger
+from japps.Errors import PluginNameError
 
 
 class PluginManager:
@@ -52,6 +54,17 @@ class PluginManager:
 
             if loader is not None:
                 self._plugins.append(loader.parse_plugin())
+        log.info("Done loading plugins. Total loaded %s", len(self._plugins))
+        self._check_plugins()
+
+    def _check_plugins(self):
+        log.info("Starting checking plugins")
+
+        plugin_names = list(map(lambda x: x.NAME, self._plugins))
+
+        # i think that's too much junk...
+        if sorted(plugin_names) != sorted(list(set(plugin_names))):
+            raise PluginNameError("Two or more plugins can't have same name")
 
     def reload_plugins(self) -> None:
         del self._plugins
@@ -72,16 +85,23 @@ class PluginManager:
     def get_all_plugin(self) -> List[IPlugin]:
         return self._plugins.copy()
 
-    def _run_plugin(self, plugin, run_type: str, *args, **kwargs) -> None:
-        log.info("\tRunning %s in %s", plugin.PLUGIN_OBJECT.__name__, self._config.plugin_runner.__name__)
-        self._config.plugin_runner.run(plugin, self._config, run_type, *args, **kwargs)
+    def _run_plugin(self, plugin: IPlugin, run_type: str, *args, **kwargs) -> Any:
+        log.info("\tRunning %s in %s", plugin.NAME, self._config.plugin_runner.__name__)
+        return self._config.plugin_runner.run(plugin, self._config, run_type, *args, **kwargs)
 
-    def run_by_field(self, field: str, value: str, run_type: str,  *args, **kwargs):
+    def run_by_field(self, field: str, value: str, run_type: str,  *args, **kwargs) -> List[Any]:
         log.info("Running through plugins with %s == %s", field, value)
-        for plugin in self.get_plugins(field, value):
-            self._run_plugin(plugin, run_type, *args, **kwargs)
+        return {plugin.NAME: self._run_plugin(plugin, run_type, *args, **kwargs) for plugin in self.get_plugins(field, value)}
 
-    def run_by_type(self, _type: str, run_type: str,  *args, **kwargs):
+    def run_by_name(self, name: str, run_type: str,  *args, **kwargs) -> List[Any]:
+        plugins_names = [plugin.NAME for plugin in self._plugins]
+        if not any([plugin_name == name for plugin_name in plugins_names]):
+            log.warning("Trying run plugin \"%s\" but it don't exist", name)
+            return
+        log.info("Running plugin with name %s", name)
+        plugin = list(filter(lambda x: x.name == name, self._plugins))[0]  # more junk :D
+        return self._run_plugin(plugin, run_type, *args, **kwargs)
+
+    def run_by_type(self, _type: str, run_type: str,  *args, **kwargs) -> List[Any]:
         log.info("Running through %s plugins", _type)
-        for plugin in filter(lambda plugin: plugin.TYPE == _type, self._plugins):
-            self._run_plugin(plugin, run_type, *args, **kwargs)
+        return [self._run_plugin(plugin, run_type, *args, **kwargs) for plugin in filter(lambda plugin: plugin.TYPE == _type, self._plugins)]

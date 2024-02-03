@@ -10,11 +10,4 @@ class IPlugin:
     TYPE: str
     PLUGIN_OBJECT: ModuleType
     DEPENDENCIES: List[str] = []
-
-
-class Plugin(IPlugin):
-    """
-    Default plugin class
-    """
     NAME: str
-    AUTHOR: str

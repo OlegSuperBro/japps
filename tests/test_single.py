@@ -5,7 +5,7 @@ import sys
 from japps.Configuration import Configuration
 from japps.PluginManager import PluginManager
 from japps.plugin_configs.OneFile import OneFileParser
-from japps.Plugin import Plugin
+from japps.plugins.SimplePlugin import SimplePlugin
 from japps.runners.SimpleFuncRunner import SimpleFuncRunner
 
 from resources.test_types import TestPlugin
@@ -18,7 +18,7 @@ config.site_packages_directory = abspath("tests/resources/site-packages")
 config.allow_package_plugins = True
 config.allow_dependencies = True
 config.package_plugin_info_parser = OneFileParser
-config.plugin_class = Plugin
+config.plugin_class = SimplePlugin
 config.plugin_runner = SimpleFuncRunner
 
 sys.path.append(config.site_packages_directory)
