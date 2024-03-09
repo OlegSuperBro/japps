@@ -37,7 +37,7 @@ class PluginManager:
                 continue
 
             loader = None
-            full_path = self._config.plugins_directory + "\\" + file
+            full_path = self._config.plugins_directory + "/" + file
 
             if (self._config.allow_package_plugins
                and is_pkg(full_path)):

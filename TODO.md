@@ -11,7 +11,7 @@
 
     - [X] Handling package dependencies
 
-    - [ ] Allow passing arguments to plugins
+    - [X] Allow passing arguments to plugins
 
 - Release:
     - [ ] Saving and loading for plugin configurations

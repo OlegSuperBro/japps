@@ -1,5 +1,11 @@
 # Changelog
 
+# 0.0.3
+
+### Fixed
+- Allow no info for single file plugin, apply no info if not all info present in config for package plugins
+- One slash instead backslashs in plugin manager (backslashes don't work on linux)
+
 # 0.0.2
 
 ### Added
