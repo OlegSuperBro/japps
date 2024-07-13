@@ -5,7 +5,7 @@ from typing import Any, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from japps.plugins.IPlugin import IPlugin
-    from japps.Configuration import Configuration
+    from japps.configuration import Configuration
 
 
 class IRunner(ABC):

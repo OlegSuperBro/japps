@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Dict, Any
 
 from japps.plugin_configs.IParser import IParser
-from japps.Utils import import_from_path
+from japps.utils import import_from_path
 
 
 class PyParser(IParser):

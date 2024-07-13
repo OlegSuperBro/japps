@@ -10,7 +10,7 @@ from pathlib import Path
 from types import ModuleType
 from typing import List
 
-from japps.Errors import PluginImportError
+from japps.errors import PluginImportError
 
 
 def is_pkg(path: PathLike):

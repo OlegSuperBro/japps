@@ -5,12 +5,12 @@ import sys
 from pathlib import Path 
 from copy import deepcopy
 
-from japps.Configuration import Configuration
-from japps.PluginManager import PluginManager
+from japps.configuration import Configuration
+from japps.pluginmanager import PluginManager
 from japps.plugin_configs.OneFile import OneFileParser
 from japps.plugins.SimplePlugin import SimplePlugin
 from japps.runners.SimpleFuncRunner import SimpleFuncRunner
-from japps.Errors import PluginNoInfoError
+from japps.errors import PluginNoInfoError
 
 from tests.resources.test_types import TestPlugin
 

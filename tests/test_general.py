@@ -1,8 +1,8 @@
 import os
 from os.path import abspath
 from pathlib import Path
-from japps.Configuration import Configuration
-from japps.PluginManager import PluginManager
+from japps.configuration import Configuration
+from japps.pluginmanager import PluginManager
 from japps.plugin_configs.Json import JsonParser
 from japps.plugins.SimplePlugin import SimplePlugin
 from japps.runners.SimpleFuncRunner import SimpleFuncRunner

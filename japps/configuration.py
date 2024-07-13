@@ -4,7 +4,6 @@ import logging
 from pathlib import Path
 
 from typing import List, Dict, Type, TYPE_CHECKING
-import japps.Errors
 
 
 if TYPE_CHECKING:

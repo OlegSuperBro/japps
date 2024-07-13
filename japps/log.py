@@ -2,7 +2,7 @@ import logging
 
 from typing import Union
 
-from japps.Configuration import Configuration
+from japps.configuration import Configuration
 
 log = logging.getLogger(__name__)
 

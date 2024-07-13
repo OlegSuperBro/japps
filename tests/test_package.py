@@ -2,13 +2,13 @@ import os
 from os.path import abspath
 from pathlib import Path
 from copy import deepcopy
-from japps.Configuration import Configuration
-from japps.PluginManager import PluginManager
+from japps.configuration import Configuration
+from japps.pluginmanager import PluginManager
 from japps.plugin_configs.Json import JsonParser
 from japps.plugin_configs.Py import PyParser
 from japps.plugins.SimplePlugin import SimplePlugin
 from japps.runners.SimpleFuncRunner import SimpleFuncRunner
-from japps.Errors import PluginNoInfoError
+from japps.errors import PluginNoInfoError
 
 from tests.resources.test_types import TestPlugin
 

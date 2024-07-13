@@ -10,12 +10,12 @@ try:
 except ImportError:
     from typing_extensions import Self, Literal  # type: ignore
 
-from japps.Configuration import Configuration
+from japps.configuration import Configuration
 from japps.plugins.IPlugin import IPlugin as _IPlugin
-from japps.PluginLoaders import SinglePluginLoader, PackagePluginLoader, IPluginLoader
-from japps.Utils import is_pkg
-from japps.Log import log, update_logger
-from japps.Errors import PluginNameError, PluginConfigError, PluginImportError, PluginNoInfoError
+from japps.pluginloaders import SinglePluginLoader, PackagePluginLoader, IPluginLoader
+from japps.utils import is_pkg
+from japps.log import log, update_logger
+from japps.errors import PluginNameError, PluginConfigError, PluginImportError, PluginNoInfoError
 
 IPlugin = TypeVar("IPlugin", bound=_IPlugin)
 

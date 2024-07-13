@@ -3,9 +3,9 @@ from typing import Any
 from japps.runners.IRunner import IRunner
 from japps.plugins.IPlugin import IPlugin
 from japps.plugins.SimplePlugin import SimplePlugin
-from japps.Log import log
-from japps.Configuration import Configuration
-from japps.Errors import CallTypeError, UnknownPluginTypeError
+from japps.log import log
+from japps.configuration import Configuration
+from japps.errors import CallTypeError, UnknownPluginTypeError
 
 
 class SimpleFuncRunner(IRunner):

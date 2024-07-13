@@ -5,7 +5,7 @@ from os import PathLike
 from typing import Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from japps.Configuration import Configuration
+    from japps.configuration import Configuration
 
 class IParser(ABC):
     @staticmethod
