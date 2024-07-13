@@ -1,5 +1,6 @@
 import os
 from os.path import abspath
+from shutil import rmtree
 import sys
 from pathlib import Path 
 from copy import deepcopy
@@ -55,10 +56,10 @@ def test_parsing():
 
 
 def test_dependency():
-    try:
-        os.remove(config.site_packages_directory)
-    except Exception:
-        pass
     manager = PluginManager(config)
     manager.load_plugins()
     manager.run_by_type("TestType", "run")
+    try:
+        rmtree(config.site_packages_directory)
+    except FileNotFoundError:
+        pass
