@@ -7,9 +7,9 @@ from typing import List, Dict, Type, TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from japps.plugin_configs.IParser import IParser
-    from japps.plugins.IPlugin import IPlugin
-    from japps.runners.IRunner import IRunner
+    from japps.plugin_config_parsers import IParser
+    from japps.plugins import IPlugin
+    from japps.runners import IRunner
 
 class Configuration:
     plugins_directory: PathLike = Path("plugins")

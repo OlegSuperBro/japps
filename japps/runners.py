@@ -1,11 +1,26 @@
-from typing import Any
+from __future__ import annotations
+from abc import ABC, abstractmethod
 
-from japps.runners.IRunner import IRunner
-from japps.plugins.IPlugin import IPlugin
-from japps.plugins.SimplePlugin import SimplePlugin
+from typing import Any, TYPE_CHECKING
+
+from japps.plugins import IPlugin
+from japps.plugins import SimplePlugin
 from japps.log import log
 from japps.configuration import Configuration
 from japps.errors import CallTypeError, UnknownPluginTypeError
+
+
+if TYPE_CHECKING:
+    from japps.plugins import IPlugin
+    from japps.configuration import Configuration
+
+
+class IRunner(ABC):
+    @staticmethod
+    @abstractmethod
+    def run(plugin: IPlugin, config: Configuration, run_type: str, *args, **kwargs) -> Any:
+        ...
+
 
 
 class SimpleFuncRunner(IRunner):

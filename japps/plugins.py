@@ -11,3 +11,13 @@ class IPlugin:
     PLUGIN_OBJECT: ModuleType
     DEPENDENCIES: List[str] = []
     NAME: str
+
+
+class SimplePlugin(IPlugin):
+    """
+    Default plugin class
+    """
+    AUTHOR: str
+    PLUGIN_FUNCS = {
+        "run": "run"
+    }

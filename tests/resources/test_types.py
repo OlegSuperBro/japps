@@ -1,4 +1,4 @@
-from japps.plugins.IPlugin import IPlugin
+from japps.plugins import IPlugin
 
 
 class TestPlugin(IPlugin):

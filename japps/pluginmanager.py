@@ -11,7 +11,7 @@ except ImportError:
     from typing_extensions import Self, Literal  # type: ignore
 
 from japps.configuration import Configuration
-from japps.plugins.IPlugin import IPlugin as _IPlugin
+from japps.plugins import IPlugin as _IPlugin
 from japps.pluginloaders import SinglePluginLoader, PackagePluginLoader, IPluginLoader
 from japps.utils import is_pkg
 from japps.log import log, update_logger

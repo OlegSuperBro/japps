@@ -6,8 +6,8 @@ from os.path import relpath
 from typing import Dict
 
 from japps.configuration import Configuration
-from japps.plugins.IPlugin import IPlugin
-from japps.plugin_configs.OneFile import OneFileParser
+from japps.plugins import IPlugin
+from japps.plugin_config_parsers import OneFileParser
 from japps.utils import import_from_path, install_dependencies
 from japps.log import log
 from japps.errors import PluginConfigError
