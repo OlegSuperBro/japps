@@ -1,5 +1,6 @@
 import os
 from os.path import abspath
+from pathlib import Path
 from japps.Configuration import Configuration
 from japps.PluginManager import PluginManager
 from japps.plugin_configs.Json import JsonParser
@@ -9,8 +10,8 @@ from japps.runners.SimpleFuncRunner import SimpleFuncRunner
 
 config = Configuration()
 
-config.plugins_directory = abspath("tests/resources/package_plugins")
-config.site_packages_directory = abspath("tests/resources/site-packages")
+config.plugins_directory = Path(abspath("tests/resources/package_plugins"))
+config.site_packages_directory = Path(abspath("tests/resources/site-packages"))
 config.allow_dependencies = True
 
 config.allow_no_info = True
@@ -23,6 +24,7 @@ config.no_info_default = {
 config.package_plugin_info_parser = JsonParser
 config.plugin_class = SimplePlugin
 config.plugin_runner = SimpleFuncRunner
+config.logging_level = 10
 
 
 def test_default():

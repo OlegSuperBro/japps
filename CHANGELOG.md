@@ -1,5 +1,26 @@
 # Changelog
 
+# 0.0.4
+
+### Added
+- Added `PluginImportError`, `PluginConfigError`, `PluginNoInfoError`, `RunnerError`, `UnknownPluginTypeError` exceptions.
+- Added type annotations and forward references in several modules to improve type checking and clarity.
+- Integrated additional debug logging for better traceability.
+- Added a `_check_is_allowed` func in `japps/PluginManager.py` to validate plugin according to configuration settings.
+- Implemented exception handling in `japps/PluginLoaders.py` and `japps/PluginManager.py` to manage plugin loading failures gracefully.
+
+### Changed
+- Added `TYPE_CHECKING` to avoid circular imports and improve type hinting.
+- Modified logger update function in `japps/Log.py` for `config` to allow using `None` as parameter.
+- Most code was refactored to use `PathLike`.
+- Updated test configurations to use `pathlib.Path` and deep copies for isolated configuration testing.
+
+### Fixed
+- Corrected the issue where plugin names were not checked correctly, potentially allowing duplicate names.
+
+### Removed
+- Removed depricated `abstractstaticmethod` and replaced it with `staticmethod` and `abstractmethod`.
+
 # 0.0.3
 
 ### Fixed

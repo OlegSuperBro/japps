@@ -1,14 +1,18 @@
 from typing import Any
 
 from japps.runners.IRunner import IRunner
+from japps.plugins.IPlugin import IPlugin
 from japps.plugins.SimplePlugin import SimplePlugin
 from japps.Log import log
 from japps.Configuration import Configuration
-from japps.Errors import CallTypeError
+from japps.Errors import CallTypeError, UnknownPluginTypeError
 
 
 class SimpleFuncRunner(IRunner):
-    def run(plugin: SimplePlugin, config: Configuration, run_type: str, *args, **kwargs) -> Any:
+    @staticmethod
+    def run(plugin: IPlugin, config: Configuration, run_type: str, *args, **kwargs) -> Any:
+        if not isinstance( plugin, SimplePlugin):
+            raise UnknownPluginTypeError()
         if run_type not in plugin.PLUGIN_FUNCS.keys():
             raise CallTypeError()
         func_name = plugin.PLUGIN_FUNCS.get(run_type)
