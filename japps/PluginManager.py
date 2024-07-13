@@ -3,7 +3,12 @@ from os.path import isdir
 from re import match
 from pathlib import Path
 
-from typing import List, Self, Any, Dict, Literal, TypeVar, Union
+from typing import List, Any, Dict, TypeVar, Union
+
+try:
+    from typing import Self, Literal
+except ImportError:
+    from typing_extensions import Self, Literal  # type: ignore
 
 from japps.Configuration import Configuration
 from japps.plugins.IPlugin import IPlugin as _IPlugin

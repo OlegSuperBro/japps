@@ -7,3 +7,4 @@ tmp*
 .pytest_cache/
 *.yaml
 site-packages
+.tox/*
